@@ -1,0 +1,20 @@
+<html>
+<title>Close Window and Save Data</title>
+<body>
+<script type="text/javascript">
+    var gui=require("nw.gui"),
+            mainWindow=gui.Window.get();
+
+    window.open("settings.html");
+
+    mainWindow.on('close',function(){
+        console.log("Close All Window");
+        gui.App.closeAllWindows();
+        alert("Application going to close")
+        this.close(true);
+    });
+
+    //gui.App.quit();       //quit window
+</script>
+</body>
+</html>

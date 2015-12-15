@@ -1,0 +1,18 @@
+<head>
+    <title>Minimize Window</title>
+<body>
+<script type="text/javascript">
+    var gui = require("nw.gui");
+    var markdown = require("markdown").markdown,
+            div = document.createElement("div"),
+            content = "Example of Minimizing the window";
+    div.innerHTML = markdown.toHTML(content);
+    document.body.appendChild(div);
+    var currentWindow = gui.Window.get();
+    currentWindow.on("minimize", function () {
+        console.log("Minimizing the window");
+        alert("Minimizing the window");
+    });
+</script>
+</body>
+</head>

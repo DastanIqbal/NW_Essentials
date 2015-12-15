@@ -1,0 +1,16 @@
+<html>
+<title>Setting</title>
+<body>
+<script type="text/javascript">
+    var gui=require("nw.gui"),
+            mainWindow=gui.Window.get();
+
+    mainWindow.on('close',function(){
+        //Save important data
+        console.log("Setting Window Close");
+        alert("Setting Window Clossing")
+        this.close(true);
+    });
+</script>
+</body>
+</html>

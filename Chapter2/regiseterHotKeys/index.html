@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Hot Key</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var gui=require("nw.gui"),
+            mainWindow=gui.Window.get();
+        var shortcut=new gui.Shortcut({
+            key:"Ctrl+Alt+W",
+            active:function(){
+                mainWindow.show();
+                console.log("You pressed my shortuct buddy");
+            }
+        });
+        gui.App.registerGlobalHotKey(shortcut);
+    </script>
+
+</body>
+</html>

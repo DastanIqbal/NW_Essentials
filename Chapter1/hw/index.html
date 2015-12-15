@@ -1,0 +1,14 @@
+<html>
+	<head>Hello World</head>
+	<body>
+		<script type="text/javascript">
+			var markdown=require("markdown").markdown,
+			div=document.createElement("div"),
+			content="#Hello World!\n"+ 
+			"We are using **io.js** "+
+			"version *"+process.version+"*";
+			div.innerHTML=markdown.toHTML(content);
+			document.body.appendChild(div);
+		</script>
+	</body>
+</html>
