@@ -3,9 +3,13 @@
 <body>
 <script type="text/javascript">
     var gui=require("nw.gui"),
-            mainWindow=gui.Window.get();
+            mainWindow=gui.Window.get(),
+            markdown=require("markdown").markdown;
 
     window.open("settings.html");
+    var div=document.createElement("div");
+    div.innerHTML=markdown.toHTML("Close All Window");
+    document.body.appendChild(div);
 
     mainWindow.on('close',function(){
         console.log("Close All Window");

@@ -1,0 +1,58 @@
+<head>
+    <title>Menu</title>
+<body>
+<script type="text/javascript">
+    "use strict";
+    var gui = require("nw.gui");
+    var markdown = require("markdown").markdown,
+            div = document.createElement("div"),
+            content = "Example of Menu";
+    div.innerHTML = markdown.toHTML(content);
+    document.body.appendChild(div);
+   var menu=new gui.Menu({type:"menubar"});
+    var mfile=new gui.MenuItem({label:"File",submenu:new gui.Menu()});
+    menu.append(mfile);
+    var mOpen=new gui.MenuItem({label:"Open"});
+    var mTray=new gui.MenuItem({label:"Tray"});
+    var mSetting=new gui.MenuItem({label:"Setting"});
+    var mClose=new gui.MenuItem({label:"Close"});
+    mfile.submenu.append(mOpen);
+    mfile.submenu.append(mTray);
+    mfile.submenu.append(mSetting);
+    mfile.submenu.append(new gui.MenuItem({type: 'separator'}));
+    mfile.submenu.append(mClose);
+
+    mfile.click = function () {
+        console.log("File Clicked");
+    };
+    mTray.click=function(){
+        var tray=new gui.Tray({title:"Tray Demo",tooltip:"Demo of tray menu"});
+        var trayMenu=new gui.Menu();
+        var openMenu=new gui.MenuItem({label:"Open"});
+        var exitMenu=new gui.MenuItem({label:"Exit"});
+        trayMenu.append(openMenu);
+        trayMenu.append(exitMenu);
+        tray.menu=trayMenu;
+        exitMenu.click=function(){
+            tray.remove();
+            tray=null;
+            gui.App.quit();
+        }
+    }
+    mOpen.click = function () {
+        console.log("Open Clicked");
+    };
+    mSetting.click = function () {
+        console.log("Setting Clicked");
+    };
+    mClose.click = function () {
+        gui.App.quit();
+        console.log("Exit Clicked");
+    };
+
+    gui.Window.get().menu=menu;
+
+
+</script>
+</body>
+</head>

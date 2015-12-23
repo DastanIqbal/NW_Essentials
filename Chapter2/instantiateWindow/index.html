@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Window Instantiate</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var gui=require("nw.gui");
+//        var currentWindow=gui.Window.get();     //refer current window
+//        var currentWindow=gui.Window.get(           //instantiate a different window object
+//                window.open("window.html")
+//        );
+        var extraWindow=gui.Window.open('window.html',{ //instantiate a different window object
+            postion:'center',
+            width:650,
+            height:650,
+            focus:true,
+            'inject-js-start':'injectScript.js'     //load before the onload()
+        });
+
+        extraWindow.onload=function(){
+            gui.Window.get().show();
+        }
+
+        /*,
+         'new-instance':true*/
+
+    </script>
+
+</body>
+</html>

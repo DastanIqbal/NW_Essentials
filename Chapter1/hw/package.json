@@ -5,10 +5,21 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    },
+  "window": {
+    "toolbar": false,
+    "frame": true,
+    "width": 800,
+    "height": 500,
+    "position": "mouse",
+    "min_width": 400,
+    "min_height": 200,
+    "max_width": 800,
+    "max_height": 800
   },
   "dependencies":{
-  	"markdown":"0.5.x"
-  	},
+     "markdown":"0.5.x"
+   },
   "author": "",
   "license": "ISC"
 }

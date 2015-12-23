@@ -1,0 +1,15 @@
+<html>
+<title>New Window</title>
+<body>
+<script type="text/javascript">
+    var gui=require("nw.gui"),
+            mainWindow=gui.Window.get();
+
+    var div=document.createElement("div");
+    div.innerHTML="New Window Dastan";
+    document.body.appendChild(div);
+    var language = mainWindow.window.navigator.language;
+    console.log(language);
+</script>
+</body>
+</html>

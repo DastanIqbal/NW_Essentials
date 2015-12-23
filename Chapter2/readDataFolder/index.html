@@ -5,19 +5,22 @@
 			var gui=require('nw.gui'),
                 fs=require('fs'),
                 path=require('path'),
-                    markdown=require('markdown');
+                    markdown=require('markdown').markdown;
 
             var settings={
                 "show_sidebar":true,
                 "show_icons":false
             };
 
-            var settingPath=path.join(gui.App.dataPath,'settings.json');
+            var settingPath=path.join(gui.App.dataPath,'settings.html');
             fs.writeFile(settingPath,JSON.stringify(settings));
 
             fs.readFile(settingPath,'utf8',function(err,data){
                 console.log(err);
                 console.log(JSON.parse(data));
+                var div=document.createElement("div");
+                div.innerHTML=markdown.toHTML(data);
+                document.body.appendChild(div);
             })
 
             console.log(gui.App.manifest);

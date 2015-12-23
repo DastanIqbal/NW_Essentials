@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resize Window</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var gui=require("nw.gui");
+        var currentWindow=gui.Window.get();
+        console.log({
+            "x":currentWindow.x,
+            "y":currentWindow.y,
+            "maxWidth":currentWindow.width,
+            "maxHeight":currentWindow.height
+        })
+
+        //After two seconds alter the window size and position
+        setTimeout(function(){
+            currentWindow.x=100,
+                    currentWindow.y=100,
+                    currentWindow.width=400,
+                    currentWindow.height=400
+        },2000);
+
+        //Window.setResizable(false)
+
+        //Log new position on change
+        currentWindow.on('move',function(x,y){
+            console.log("New Position","X:"+x+" Y:"+y);
+        });
+
+        //Log new size on change
+        currentWindow.on('resize',function(x,y){
+            console.log("New Size","X:"+x+" Y:"+y);
+        });
+
+    </script>
+</body>1
+</html>
